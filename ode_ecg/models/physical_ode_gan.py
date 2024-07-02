@@ -1,5 +1,10 @@
 # Lint as: python3
 """Train a physical ODE GAN."""
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 from torchdiffeq import odeint
 import torch
 from ode_ecg.data_reader import dataset_configs
@@ -9,7 +14,6 @@ from torch import nn
 from torch import optim
 import logging
 import matplotlib.pyplot as plt
-import os
 import numpy as np
 
 
@@ -112,6 +116,7 @@ def train_physical_ode_gan(batch_size: int, num_iterations: int, model_dir: str,
         logging.info("Dir already exists... exiting...")
         exit(-1)
     else:
+        print(os.path.join(model_dir))
         os.mkdir(os.path.join(model_dir))
 
     dataloader = mit_bih_heartbeat_dataloader(beat_type, batch_size)

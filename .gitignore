@@ -7,3 +7,4 @@
 *.hea
 *alexander.ecg
 **/*.egg-info
+ode_ecg.code-workspace
